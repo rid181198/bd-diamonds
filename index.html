@@ -1,7 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>B&D Diamonds | Premier Diamond Cutting & Finishing | Surat</title>
@@ -52,6 +51,7 @@
             line-height: 1.6;
             transition: background-color 0.4s ease, color 0.4s ease;
             overflow-x: hidden;
+            top: 0px !important;
         }
         
         h1, h2, h3, h4, .logo { font-family: 'Playfair Display', serif; }
@@ -72,7 +72,7 @@
         }
         .logo { font-size: 1.5rem; font-weight: 700; color: var(--accent-gold); display: flex; align-items: center; gap: 0.5rem; }
         .logo span { font-size: 1.4rem; }
-        .nav-right { display: flex; align-items: center; gap: 1.5rem; }
+        .nav-right { display: flex; align-items: center; gap: 1rem; }
         .nav-links { display: flex; list-style: none; gap: 2rem; }
         .nav-links a { color: var(--text-main); text-decoration: none; font-size: 0.95rem; font-weight: 500; }
         .nav-links a:hover { color: var(--accent-gold); }
@@ -90,12 +90,52 @@
             align-items: center; 
             gap: 0.5rem; 
             box-shadow: var(--shadow-sm);
+            transition: all 0.3s ease;
+        }
+        .theme-toggle-btn:hover { border-color: var(--accent-gold); }
+
+        /* Custom Flag Language Selector Wrapper */
+        .custom-lang-wrapper {
+            position: relative;
+            display: flex;
+            align-items: center;
+            background: var(--bg-card);
+            border: 1px solid var(--border-color);
+            border-radius: 30px;
+            padding: 0.4rem 0.8rem;
+            box-shadow: var(--shadow-sm);
+            transition: border-color 0.3s ease;
+        }
+        .custom-lang-wrapper:hover { border-color: var(--accent-gold); }
+        
+        .custom-lang-select {
+            background: transparent;
+            border: none;
+            color: var(--text-main);
+            font-size: 0.85rem;
+            font-weight: 600;
+            font-family: inherit;
+            cursor: pointer;
+            outline: none;
+            appearance: none;
+            -webkit-appearance: none;
+            padding-right: 0.4rem;
+        }
+        .custom-lang-select option {
+            background-color: var(--bg-card);
+            color: var(--text-main);
+        }
+
+        /* Hide Default Google Elements Completely */
+        #google_translate_element { display: none !important; }
+        .goog-te-banner-frame, .goog-te-balloon-frame, .skiptranslate, iframe.skiptranslate { 
+            display: none !important; 
         }
 
         .hamburger { display: none; flex-direction: column; cursor: pointer; gap: 5px; }
         .hamburger span { width: 25px; height: 2px; background-color: var(--text-main); }
 
-        /* Hero Section with Falling Diamonds Background */
+        /* Hero Section */
         .hero { 
             min-height: 85vh; 
             display: flex; 
@@ -138,7 +178,7 @@
         }
         .reveal-tile.active { opacity: 1; transform: translateY(0); }
 
-        /* Dual Axis Expansion Grid */
+        /* Expansion Grid */
         .expand-grid { 
             display: grid; 
             grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); 
@@ -181,7 +221,6 @@
             transform: scale(1.1);
         }
 
-        /* Clean CSS Placeholder for Executive Profiles */
         .img-placeholder {
             width: 100%;
             height: 200px;
@@ -212,7 +251,6 @@
         }
         .flow-card:hover .hover-badge { transform: translateX(4px); }
 
-        /* Hidden Collapsible Content Area */
         .expandable-content {
             max-height: 0;
             opacity: 0;
@@ -229,7 +267,6 @@
             border-top-color: var(--border-color);
         }
 
-        /* Gallery Grid inside Expanded View */
         .mini-gallery-grid {
             display: grid;
             grid-template-columns: 1fr 1fr;
@@ -247,7 +284,6 @@
         .expandable-content ul { margin-left: 1.2rem; color: var(--text-muted); font-size: 0.85rem; }
         .expandable-content ul li { margin-bottom: 0.3rem; }
 
-        /* Clients Logos Grid */
         .clients-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(160px, 1fr)); gap: 1.5rem; }
         .client-logo-card { 
             background: var(--bg-card); 
@@ -267,7 +303,6 @@
         }
         .client-logo-card:hover { transform: translateY(-4px); border-color: var(--accent-gold); box-shadow: var(--shadow-sm); }
 
-        /* Reviews / Testimonials Section */
         .reviews-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 2rem; }
         .review-card { 
             background: var(--bg-card); 
@@ -290,7 +325,6 @@
         .review-author { font-weight: 700; color: var(--text-main); font-size: 0.95rem; }
         .review-company { color: var(--accent-gold); font-size: 0.85rem; font-weight: 500; }
 
-        /* Contact Section */
         .contact-container { display: grid; grid-template-columns: 1fr 1fr; gap: 3rem; }
         .contact-card { 
             background: var(--bg-card); 
@@ -325,6 +359,21 @@
     <nav>
         <div class="logo"><span>💎</span> B&D Diamonds</div>
         <div class="nav-right">
+            <!-- Custom Language Dropdown with Country Flags -->
+            <div class="custom-lang-wrapper">
+                <select class="custom-lang-select" id="customLangSelect" onchange="translatePage(this.value)">
+                    <option value="en">🇬🇧 English</option>
+                    <option value="gu">🇮🇳 ગુજરાતી (Gujarati)</option>
+                    <option value="nl">🇳🇱 Nederlands (Dutch)</option>
+                    <option value="fr">🇫🇷 Français (French)</option>
+                    <option value="de">🇩🇪 Deutsch (German)</option>
+                    <option value="zh-CN">🇨🇳 中文 (Chinese)</option>
+                </select>
+            </div>
+
+            <!-- Hidden Element for Google Engine API -->
+            <div id="google_translate_element"></div>
+
             <button class="theme-toggle-btn" id="themeToggleBtn">
                 <span id="themeIcon">🌙</span> <span id="themeText">Dark</span>
             </button>
@@ -341,7 +390,7 @@
         </div>
     </nav>
 
-    <!-- Hero Header with Loose Diamond Background -->
+    <!-- Hero Header -->
     <header class="hero">
         <h1>Crafting Brilliance with <span>Precision Technology</span></h1>
         <p>B&D Diamonds is Surat’s premier diamond processing facility—specializing in high-precision rough planning, laser sawing, and excellent 3EX cut finishing.</p>
@@ -428,7 +477,7 @@
         </div>
     </section>
 
-    <!-- Leadership Section with Placeholders & Correct Names -->
+    <!-- Leadership Section -->
     <section id="team">
         <h2 class="section-title">Leadership <span>Team</span></h2>
         <div class="expand-grid">
@@ -584,6 +633,39 @@
         }, { threshold: 0.15 });
 
         document.querySelectorAll('.reveal-tile').forEach(tile => observer.observe(tile));
+
+        // Reliable Translation Handler (Handles English reset properly)
+        function translatePage(langCode) {
+            if (langCode === 'en') {
+                // Restore original page by clearing translation cookie & reloading or resetting frame
+                document.cookie = "googtrans=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/;";
+                document.cookie = "googtrans=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/; domain=" + location.hostname + ";";
+                location.reload();
+                return;
+            }
+
+            const googleSelect = document.querySelector('.goog-te-combo');
+            if (googleSelect) {
+                googleSelect.value = langCode;
+                googleSelect.dispatchEvent(new Event('change'));
+            } else {
+                // Fallback via cookie setting if widget iframe load is delayed
+                document.cookie = "googtrans=/en/" + langCode + "; path=/;";
+                location.reload();
+            }
+        }
     </script>
+
+    <!-- Hidden Google Auto-Translation API Script -->
+    <script type="text/javascript">
+        function googleTranslateElementInit() {
+            new google.translate.TranslateElement({
+                pageLanguage: 'en',
+                includedLanguages: 'gu,nl,fr,de,zh-CN',
+                autoDisplay: false
+            }, 'google_translate_element');
+        }
+    </script>
+    <script type="text/javascript" src="https://translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
 </body>
 </html>

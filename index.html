@@ -14,7 +14,7 @@
         :root {
             --bg-main: #f8fafc;
             --bg-card: #ffffff;
-            --bg-nav: rgba(255, 255, 255, 0.88);
+            --bg-nav: rgba(255, 255, 255, 0.95);
             --border-color: #e2e8f0;
             --text-main: #0f172a;
             --text-muted: #64748b;
@@ -30,7 +30,7 @@
         body.dark-mode {
             --bg-main: #06090e;
             --bg-card: #0f172a;
-            --bg-nav: rgba(6, 9, 14, 0.88);
+            --bg-nav: rgba(6, 9, 14, 0.95);
             --border-color: #1e293b;
             --text-main: #f8fafc;
             --text-muted: #94a3b8;
@@ -61,7 +61,7 @@
             display: flex; 
             justify-content: space-between; 
             align-items: center; 
-            padding: 1.2rem 8%; 
+            padding: 1.2rem 6%; 
             background: var(--bg-nav); 
             position: fixed; 
             width: 100%; 
@@ -70,10 +70,13 @@
             border-bottom: 1px solid var(--border-color); 
             backdrop-filter: blur(12px); 
         }
-        .logo { font-size: 1.5rem; font-weight: 700; color: var(--accent-gold); display: flex; align-items: center; gap: 0.5rem; }
+        .logo { font-size: 1.4rem; font-weight: 700; color: var(--accent-gold); display: flex; align-items: center; gap: 0.5rem; }
         .logo span { font-size: 1.4rem; }
+        
+        /* Desktop Navigation Layout */
         .nav-right { display: flex; align-items: center; gap: 1rem; }
-        .nav-links { display: flex; list-style: none; gap: 2rem; }
+        .nav-links-wrapper { display: flex; align-items: center; gap: 1.5rem; }
+        .nav-links { display: flex; list-style: none; gap: 1.8rem; align-items: center; }
         .nav-links a { color: var(--text-main); text-decoration: none; font-size: 0.95rem; font-weight: 500; }
         .nav-links a:hover { color: var(--accent-gold); }
         
@@ -126,14 +129,41 @@
             color: var(--text-main);
         }
 
+        /* Sub-bar Language Selector for Mobile/Tablet */
+        .mobile-lang-bar {
+            display: none;
+            position: fixed;
+            top: 73px; /* Sits right under the nav header */
+            left: 0;
+            width: 100%;
+            justify-content: center;
+            background: var(--bg-nav);
+            border-bottom: 1px solid var(--border-color);
+            padding: 0.5rem;
+            z-index: 999;
+            backdrop-filter: blur(12px);
+        }
+
         /* Hide Default Google Elements Completely */
         #google_translate_element { display: none !important; }
         .goog-te-banner-frame, .goog-te-balloon-frame, .skiptranslate, iframe.skiptranslate { 
             display: none !important; 
         }
 
-        .hamburger { display: none; flex-direction: column; cursor: pointer; gap: 5px; }
-        .hamburger span { width: 25px; height: 2px; background-color: var(--text-main); }
+        /* Hamburger Icon */
+        .hamburger { 
+            display: none; 
+            flex-direction: column; 
+            cursor: pointer; 
+            gap: 5px;
+            padding: 5px;
+        }
+        .hamburger span { 
+            width: 24px; 
+            height: 2px; 
+            background-color: var(--text-main); 
+            transition: all 0.3s ease;
+        }
 
         /* Hero Section */
         .hero { 
@@ -148,9 +178,9 @@
             background: linear-gradient(var(--hero-bg-overlay), var(--bg-main)), 
                         url('https://images.unsplash.com/photo-1515562141207-7a88fb7ce338?auto=format&fit=crop&w=1920&q=80') center/cover no-repeat;
         }
-        .hero h1 { font-size: clamp(2.5rem, 5vw, 4rem); margin-bottom: 1.2rem; }
+        .hero h1 { font-size: clamp(2.2rem, 5vw, 4rem); margin-bottom: 1.2rem; }
         .hero h1 span { color: var(--accent-gold); font-style: italic; }
-        .hero p { font-size: clamp(1rem, 2vw, 1.2rem); color: var(--text-muted); max-width: 720px; margin-bottom: 2.5rem; }
+        .hero p { font-size: clamp(0.95rem, 2vw, 1.2rem); color: var(--text-muted); max-width: 720px; margin-bottom: 2.5rem; }
         
         .btn { 
             padding: 0.9rem 2.2rem; 
@@ -167,7 +197,7 @@
         .btn:hover { background: var(--text-main); color: var(--bg-main); transform: translateY(-3px); }
 
         /* Section Layout & Reveal */
-        section { padding: 4.5rem 8%; }
+        section { padding: 4.5rem 6%; }
         .section-title { text-align: center; font-size: clamp(1.8rem, 3vw, 2.5rem); margin-bottom: 3rem; }
         .section-title span { color: var(--accent-gold); font-style: italic; }
 
@@ -199,7 +229,7 @@
         }
         
         .flow-card:hover { 
-            transform: scale(1.05); 
+            transform: scale(1.03); 
             box-shadow: var(--shadow-hover); 
             border-color: var(--accent-gold); 
             z-index: 100;
@@ -284,7 +314,7 @@
         .expandable-content ul { margin-left: 1.2rem; color: var(--text-muted); font-size: 0.85rem; }
         .expandable-content ul li { margin-bottom: 0.3rem; }
 
-        .clients-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(160px, 1fr)); gap: 1.5rem; }
+        .clients-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(140px, 1fr)); gap: 1.5rem; }
         .client-logo-card { 
             background: var(--bg-card); 
             border: 1px solid var(--border-color); 
@@ -314,7 +344,7 @@
             position: relative;
         }
         .review-card:hover { 
-            transform: scale(1.04); 
+            transform: scale(1.02); 
             box-shadow: var(--shadow-hover); 
             border-color: var(--accent-gold); 
             z-index: 10;
@@ -339,29 +369,71 @@
         }
         footer { text-align: center; padding: 2.5rem; background: var(--bg-card); color: var(--text-muted); font-size: 0.85rem; border-top: 1px solid var(--border-color); }
 
-        @media (max-width: 900px) { .contact-container { grid-template-columns: 1fr; } }
-        @media (max-width: 768px) {
+        /* Media Queries for iPad & Mobile Adjustments */
+        @media (max-width: 1024px) {
             .hamburger { display: flex; }
-            .nav-links { 
-                display: none; position: absolute; top: 100%; left: 0; width: 100%; 
-                background: var(--bg-nav); flex-direction: column; padding: 2rem; 
-                border-bottom: 1px solid var(--border-color); text-align: center; 
+            .desktop-lang { display: none; }
+            .mobile-lang-bar { display: flex; }
+
+            .hero { padding-top: 11rem; } /* Extra spacing for the secondary language bar */
+            
+            .nav-links-wrapper { 
+                display: none; 
+                position: absolute; 
+                top: 100%; 
+                left: 0; 
+                width: 100%; 
+                background: var(--bg-nav); 
+                flex-direction: column; 
+                padding: 2rem 1.5rem; 
+                border-bottom: 1px solid var(--border-color); 
+                text-align: center;
+                gap: 1.5rem;
+                box-shadow: 0 10px 25px rgba(0,0,0,0.1);
             }
-            .nav-links.active { display: flex; }
+            .nav-links-wrapper.active { display: flex; }
+
+            .nav-links { 
+                flex-direction: column; 
+                gap: 1.2rem; 
+                width: 100%;
+            }
+
+            .contact-container { grid-template-columns: 1fr; gap: 2rem; }
+        }
+
+        @media (max-width: 768px) {
+            section { padding: 3.5rem 5%; }
+            .hero { padding: 10rem 5% 4rem 5%; }
+            
+            /* Keep expanded specs readable on touch viewports */
             .flow-card:hover { transform: none; }
-            .expandable-content { max-height: none; opacity: 1; padding: 1rem 1.5rem 1.5rem 1.5rem; }
+            .expandable-content { max-height: none; opacity: 1; padding: 1rem 1.5rem 1.5rem 1.5rem; border-top-color: var(--border-color); }
+            .hover-badge { display: none; }
         }
     </style>
 </head>
 <body>
 
-    <!-- Nav Bar -->
+    <!-- Main Navigation Bar -->
     <nav>
         <div class="logo"><span>💎</span> B&D Diamonds</div>
+        
         <div class="nav-right">
-            <!-- Custom Language Dropdown with Country Flags -->
-            <div class="custom-lang-wrapper">
-                <select class="custom-lang-select" id="customLangSelect" onchange="translatePage(this.value)">
+            <!-- Navigation Links Wrapper -->
+            <div class="nav-links-wrapper" id="navLinksWrapper">
+                <ul class="nav-links">
+                    <li><a href="#facility" onclick="closeMenu()">Machinery</a></li>
+                    <li><a href="#team" onclick="closeMenu()">Leadership</a></li>
+                    <li><a href="#clients" onclick="closeMenu()">Clients</a></li>
+                    <li><a href="#reviews" onclick="closeMenu()">Reviews</a></li>
+                    <li><a href="#contact" onclick="closeMenu()">Contact</a></li>
+                </ul>
+            </div>
+
+            <!-- Custom Language Dropdown (Desktop view) -->
+            <div class="custom-lang-wrapper desktop-lang">
+                <select class="custom-lang-select" onchange="translatePage(this.value)">
                     <option value="en">🇬🇧 English</option>
                     <option value="gu">🇮🇳 ગુજરાતી (Gujarati)</option>
                     <option value="nl">🇳🇱 Nederlands (Dutch)</option>
@@ -371,24 +443,34 @@
                 </select>
             </div>
 
-            <!-- Hidden Element for Google Engine API -->
-            <div id="google_translate_element"></div>
-
+            <!-- Theme Toggle Button -->
             <button class="theme-toggle-btn" id="themeToggleBtn">
                 <span id="themeIcon">🌙</span> <span id="themeText">Dark</span>
             </button>
+
+            <!-- Mobile & iPad Hamburger Icon -->
             <div class="hamburger" id="hamburger">
                 <span></span><span></span><span></span>
             </div>
-            <ul class="nav-links" id="navLinks">
-                <li><a href="#facility">Machinery</a></li>
-                <li><a href="#team">Leadership</a></li>
-                <li><a href="#clients">Clients</a></li>
-                <li><a href="#reviews">Reviews</a></li>
-                <li><a href="#contact">Contact</a></li>
-            </ul>
         </div>
+
+        <!-- Hidden Element for Google Engine API -->
+        <div id="google_translate_element"></div>
     </nav>
+
+    <!-- Sub-header Language Selector Bar (Visible ONLY on iPad and Mobile screens below navigation bar) -->
+    <div class="mobile-lang-bar">
+        <div class="custom-lang-wrapper">
+            <select class="custom-lang-select" onchange="translatePage(this.value)">
+                <option value="en">🇬🇧 English</option>
+                <option value="gu">🇮🇳 ગુજરાતી (Gujarati)</option>
+                <option value="nl">🇳🇱 Nederlands (Dutch)</option>
+                <option value="fr">🇫🇷 Français (French)</option>
+                <option value="de">🇩🇪 Deutsch (German)</option>
+                <option value="zh-CN">🇨🇳 中文 (Chinese)</option>
+            </select>
+        </div>
+    </div>
 
     <!-- Hero Header -->
     <header class="hero">
@@ -620,10 +702,17 @@
             themeText.textContent = isDark ? 'Light' : 'Dark';
         });
 
-        // Mobile Menu Toggle
+        // Mobile / iPad Menu Toggle
         const hamburger = document.getElementById('hamburger');
-        const navLinks = document.getElementById('navLinks');
-        hamburger.addEventListener('click', () => navLinks.classList.toggle('active'));
+        const navLinksWrapper = document.getElementById('navLinksWrapper');
+        
+        hamburger.addEventListener('click', () => {
+            navLinksWrapper.classList.toggle('active');
+        });
+
+        function closeMenu() {
+            navLinksWrapper.classList.remove('active');
+        }
 
         // Scroll Reveal Observer
         const observer = new IntersectionObserver((entries) => {
@@ -634,10 +723,9 @@
 
         document.querySelectorAll('.reveal-tile').forEach(tile => observer.observe(tile));
 
-        // Reliable Translation Handler (Handles English reset properly)
+        // Translation Handler
         function translatePage(langCode) {
             if (langCode === 'en') {
-                // Restore original page by clearing translation cookie & reloading or resetting frame
                 document.cookie = "googtrans=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/;";
                 document.cookie = "googtrans=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/; domain=" + location.hostname + ";";
                 location.reload();
@@ -649,7 +737,6 @@
                 googleSelect.value = langCode;
                 googleSelect.dispatchEvent(new Event('change'));
             } else {
-                // Fallback via cookie setting if widget iframe load is delayed
                 document.cookie = "googtrans=/en/" + langCode + "; path=/;";
                 location.reload();
             }
